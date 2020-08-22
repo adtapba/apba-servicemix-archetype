@@ -1,0 +1,1 @@
+# apba-servicemix-archetype
