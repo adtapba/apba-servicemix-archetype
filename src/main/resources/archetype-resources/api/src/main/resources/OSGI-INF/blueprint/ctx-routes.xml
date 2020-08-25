@@ -1,0 +1,65 @@
+#set( $symbol_dollar = '$' )
+#set( $camelContextFirstCharacter = ${systemCodeCamelCase.substring(0, 1).toUpperCase()} )
+#set( $camelContextRestCharacters = ${systemCodeCamelCase.substring(1)} )
+#set( $camelContext = ${camelContextFirstCharacter.concat(${camelContextRestCharacters})} )
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="
+                http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+                http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <bean id="uuidProducer" class="es.apba.infra.esb.support.camel.util.UuidProducer" />
+	
+    <camelContext id="Ctx${camelContext}ApiRouting" xmlns="http://camel.apache.org/schema/blueprint">        
+        <route id="RtLineCrossedEventRestResource">
+            <from uri="cxfrs:bean:lineCrossedEventResourceEndpoint?bindingStyle=SimpleConsumer" />	
+            
+            <setHeader headerName="apbaTransactionId">
+                <simple>${camelContext}_LineCrossedEvent_${symbol_dollar}{body.uuid}</simple>
+            </setHeader>
+            
+            <marshal>
+                <json library="Jackson" />
+            </marshal>                          
+                                  
+            <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | API Routing | IN | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | ${symbol_dollar}{body}"/>
+                    
+            <to uri="direct-vm:LineCrossedEventRestResource_postLineCrossedEvent"/>
+        </route>    
+          
+        <route id="RtGeographicalLineRestResource">
+            <from uri="cxfrs:bean:geographicalLineResourceEndpoint?bindingStyle=SimpleConsumer" />	
+            
+            <setHeader headerName="apbaTransactionId">
+                <simple>${camelContext}_GeographicalLine_${symbol_dollar}{bean:uuidProducer?method=getUUID}</simple>
+            </setHeader>
+            
+            <marshal>
+                <json library="Jackson" />
+            </marshal>                          
+                                  
+            <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | API Routing | IN | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | ${symbol_dollar}{body}"/>
+                    
+            <recipientList>
+                <simple>direct-vm:GeographicalLineRestResource_${symbol_dollar}{header.operationName}</simple>
+            </recipientList>
+        </route>   
+          
+        <route id="RtPositionRestResource">
+            <from uri="cxfrs:bean:positionResourceEndpoint?bindingStyle=SimpleConsumer" />	
+            
+            <setHeader headerName="apbaTransactionId">
+                <simple>${camelContext}_Position_${symbol_dollar}{bean:uuidProducer?method=getUUID}</simple>
+            </setHeader>
+            
+            <marshal>
+                <json library="Jackson" />
+            </marshal>                          
+                                  
+            <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | API Routing | IN | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | ${symbol_dollar}{body}"/>
+                    
+            <to uri="direct-vm:PositionRestResource_getPosition"/>
+        </route>
+    </camelContext>
+
+</blueprint>
