@@ -1,3 +1,4 @@
+#set( $systemCode = ${systemCodeCamelCase.toLowerCase()} )
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -14,4 +15,52 @@
     <packaging>pom</packaging>
     
     <name>${groupId}:parent</name>
+    
+    <scm>
+        <connection>scm:git:https://alm.apba.es/bitbucket/scm/pcis/${systemCode}.git</connection>
+        <developerConnection>scm:git:https://alm.apba.es/bitbucket/scm/pcis/${systemCode}.git</developerConnection>
+    </scm>
+    
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>apps01.apba.local-snapshots</name>
+            <url>http://apps01.apba.local/artifactory/prov-snapshot-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>apps01.apba.local-releases</name>
+            <url>http://apps01.apba.local/artifactory/prov-release-local</url>
+        </repository>        
+    </distributionManagement>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>      
+                    <skipStaging>true</skipStaging>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>  
+    </build>
 </project>

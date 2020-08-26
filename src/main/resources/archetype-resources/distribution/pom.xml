@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     
     <name>${groupId}:${artifactId}</name>
+    
     <description>Contains helper data for the integration application:
         
         - ServiceMix features.

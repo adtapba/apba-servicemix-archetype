@@ -1,17 +1,17 @@
 #set( $symbol_dollar = '$' )
+#set( $systemCode = ${systemCodeCamelCase.toLowerCase()} )
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <!--
     Karaf commands:
     
-        feature:repo-add mvn:${groupId}/${artifactId}/${symbol_dollar}{project.version}/xml/features
-    
-        feature:install ${systemCodeCamelCase.toLowerCase()}/${symbol_dollar}{project.version}
+feature:repo-add mvn:${groupId}/${artifactId}/${symbol_dollar}{project.version}/xml/features
+feature:install ${systemCode}/${symbol_dollar}{project.version}
 -->
 
-<features name="${systemCodeCamelCase.toLowerCase()}-features-${symbol_dollar}{project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+<features name="${systemCode}-features-${symbol_dollar}{project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
 
-    <feature version="${symbol_dollar}{project.version}" name="${systemCodeCamelCase.toLowerCase()}">
+    <feature version="${symbol_dollar}{project.version}" name="${systemCode}">
         <feature version="${symbol_dollar}{jasypt.encryption.version}">jasypt-encryption</feature>   
         <feature version="${symbol_dollar}{camel.version}">camel-jasypt</feature>  
         <feature version="${symbol_dollar}{camel.version}">camel-cxf</feature>
@@ -24,9 +24,9 @@
         <bundle>mvn:es.apba.infra.esb.support/apba-support-camel/1.0.0</bundle>  
         <bundle>mvn:es.apba.infra.esb.support/apba-support-cxf/1.0.0</bundle>  
         <bundle>mvn:${groupId}/api/${symbol_dollar}{project.version}</bundle>   
-        <bundle>mvn:${groupId}/${systemCodeCamelCase.toLowerCase()}2esb/${symbol_dollar}{project.version}</bundle> 
-        <bundle>mvn:${groupId}/esb2${systemCodeCamelCase.toLowerCase()}-consumers/${symbol_dollar}{project.version}</bundle>    
-        <bundle>mvn:${groupId}/esb2${systemCodeCamelCase.toLowerCase()}-proxyservices/${symbol_dollar}{project.version}</bundle>    
+        <bundle>mvn:${groupId}/${systemCode}2esb/${symbol_dollar}{project.version}</bundle> 
+        <bundle>mvn:${groupId}/esb2${systemCode}-consumers/${symbol_dollar}{project.version}</bundle>    
+        <bundle>mvn:${groupId}/esb2${systemCode}-proxyservices/${symbol_dollar}{project.version}</bundle>    
     </feature>
     
 </features>

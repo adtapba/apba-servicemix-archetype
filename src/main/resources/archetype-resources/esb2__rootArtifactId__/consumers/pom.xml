@@ -13,7 +13,7 @@
     <artifactId>${artifactId}</artifactId>
     <packaging>bundle</packaging>
 
-    <name>${groupId}:${artifactId}-consumers</name>
+    <name>${groupId}:${artifactId}</name>
     
     <dependencies>       
         <dependency>

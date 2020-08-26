@@ -2,6 +2,7 @@
 #set( $camelContextFirstCharacter = ${systemCodeCamelCase.substring(0, 1).toUpperCase()} )
 #set( $camelContextRestCharacters = ${systemCodeCamelCase.substring(1)} )
 #set( $camelContext = ${camelContextFirstCharacter.concat(${camelContextRestCharacters})} )
+#set( $systemCode = ${systemCodeCamelCase.toLowerCase()} )
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -70,7 +71,7 @@
                     <constant>true</constant>
                 </handled>
                 <log loggingLevel="ERROR" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Connect exception | ERROR | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>                                     
-                <to uri="activemq:queue:DLQ.apba.queue.${systemCodeCamelCase.toLowerCase()}.trackevent"/>
+                <to uri="activemq:queue:DLQ.apba.queue.${systemCode}.trackevent"/>
                 <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message sent to DLQ | OUT | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>
             </onException>
             
@@ -80,7 +81,7 @@
                     <constant>true</constant>
                 </handled>
                 <log loggingLevel="ERROR" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Exception detected | ERROR | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | ${symbol_dollar}{exception.message}"/>
-                <to uri="activemq:queue:DLQ.apba.queue.${systemCodeCamelCase.toLowerCase()}.trackevent"/>   
+                <to uri="activemq:queue:DLQ.apba.queue.${systemCode}.trackevent"/>   
                 <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message sent to DLQ | OUT | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>                     
             </onException>
             
@@ -98,12 +99,12 @@
         
         <!-- DLQ processing routes available for administrators-->
         <route id="RtTrackEventPurgeDLQ" autoStartup="false">
-            <from uri="activemq:queue:DLQ.apba.queue.${systemCodeCamelCase.toLowerCase()}.trackevent"/>
+            <from uri="activemq:queue:DLQ.apba.queue.${systemCode}.trackevent"/>
             <log loggingLevel="WARN" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message purged | OUT | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | ${symbol_dollar}{body}"/>              
         </route>  
         
         <route id="RtTrackEventProcessDLQ" autoStartup="false">
-            <from uri="activemq:queue:DLQ.apba.queue.${systemCodeCamelCase.toLowerCase()}.trackevent"/>
+            <from uri="activemq:queue:DLQ.apba.queue.${systemCode}.trackevent"/>
             <log loggingLevel="WARN" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message re-injeted on consumer | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>
             <to uri="direct:TrackEventConsume"/>
         </route>         

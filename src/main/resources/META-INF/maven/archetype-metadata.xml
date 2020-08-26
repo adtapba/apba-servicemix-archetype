@@ -9,10 +9,10 @@
   <modules>
     <module id="api" dir="api" name="api">
       <fileSets>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>
-            <include>**/api/*.java</include>
+            <include>**/*.java</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
@@ -33,7 +33,7 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="esb2${rootArtifactId}" dir="esb2__rootArtifactId__r" name="esb2${rootArtifactId}">
+    <module id="esb2${rootArtifactId}" dir="esb2__rootArtifactId__" name="esb2${rootArtifactId}">
       <modules>
         <module id="${rootArtifactId}-consumers" dir="consumers" name="${rootArtifactId}-consumers">
           <fileSets>

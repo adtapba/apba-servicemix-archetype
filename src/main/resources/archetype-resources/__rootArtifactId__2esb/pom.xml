@@ -14,7 +14,8 @@
     <packaging>bundle</packaging>
 
     <name>${groupId}:${artifactId}</name>
-    <description>Routes for the AIS manager application to publish information on the ESB</description>
+    
+    <description>Routes for the application to publish information on the ESB</description>
     
     <dependencies>        
         <dependency>

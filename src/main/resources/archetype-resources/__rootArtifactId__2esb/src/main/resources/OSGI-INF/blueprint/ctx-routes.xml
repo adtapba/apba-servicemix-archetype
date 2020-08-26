@@ -2,6 +2,7 @@
 #set( $camelContextFirstCharacter = ${systemCodeCamelCase.substring(0, 1).toUpperCase()} )
 #set( $camelContextRestCharacters = ${systemCodeCamelCase.substring(1)} )
 #set( $camelContext = ${camelContextFirstCharacter.concat(${camelContextRestCharacters})} )
+#set( $systemCode = ${systemCodeCamelCase.toLowerCase()} )
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -61,7 +62,7 @@
                 <header>apbaTransactionId</header>
                 <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Queuing message for processing ... | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>
                 <recipientList>
-                    <simple>activemq:queue:apba.queue.${systemCodeCamelCase.toLowerCase()}.linecrossedevent?exchangePattern=InOnly</simple>
+                    <simple>activemq:queue:apba.queue.${systemCode}.linecrossedevent?exchangePattern=InOnly</simple>
                 </recipientList>
             </idempotentConsumer>
             <choice>
@@ -82,8 +83,8 @@
         </route>
         
         <route id="RtLineCrossedEventMessagePublishing">
-            <from uri="activemq:queue:apba.queue.${systemCodeCamelCase.toLowerCase()}.linecrossedevent" />
-            <inOnly uri="activemq:topic:apba.topic.${systemCodeCamelCase.toLowerCase()}.linecrossedevent"/>     
+            <from uri="activemq:queue:apba.queue.${systemCode}.linecrossedevent" />
+            <inOnly uri="activemq:topic:apba.topic.${systemCode}.linecrossedevent"/>     
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message published | OUT | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId}"/>           
         </route>
         
