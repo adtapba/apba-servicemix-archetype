@@ -9,12 +9,12 @@
         <version>1.0.0</version>
     </parent>
     
-    <groupId>${groupId}</groupId>
+    <groupId>es.apba.infra.esb.${systemCode}</groupId>
     <artifactId>parent</artifactId>
-    <version>${version}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     
-    <name>${groupId}:parent</name>
+    <name>es.apba.infra.esb.${systemCode}:parent</name>
     
     <scm>
         <connection>scm:git:https://alm.apba.es/bitbucket/scm/pcis/${systemCode}.git</connection>
