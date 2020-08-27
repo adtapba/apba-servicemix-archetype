@@ -31,9 +31,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/adtapba/aismanager-sample-bundles.git</connection>
-        <developerConnection>scm:git:https://github.com/adtapba/aismanager-sample-bundles.git</developerConnection>
-        <url>https://github.com/adtapba/aismanager-sample-bundles</url>
+        <connection>scm:git:https://github.com/adtapba/apba-servicemix-archetype.git</connection>
+        <developerConnection>scm:git:https://github.com/adtapba/apba-servicemix-archetype.git</developerConnection>
+        <url>https://github.com/adtapba/apba-servicemix-archetype</url>
     </scm>
 
     <distributionManagement>
