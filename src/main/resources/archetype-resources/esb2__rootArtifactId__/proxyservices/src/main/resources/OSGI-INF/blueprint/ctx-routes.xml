@@ -69,7 +69,7 @@
             <removeHeaders pattern="Authorization"/>
         
             <recipientList>
-                <simple>{{aisManagerDestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.regular.username}}&amp;authPassword={{aisManagerDestinationEndpoint.regular.password}}</simple>
+                <simple>{{${systemCodeCamelCase}DestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.regular.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.regular.password}}</simple>
             </recipientList>
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Query result | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>            
             
@@ -86,7 +86,7 @@
                         
             <removeHeaders pattern="Authorization"/>
         
-            <to uri="{{aisManagerDestinationEndpoint.geographicalLine.URL}}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.admin.username}}&amp;authPassword={{aisManagerDestinationEndpoint.admin.password}}"/>               
+            <to uri="{{${systemCodeCamelCase}DestinationEndpoint.geographicalLine.URL}}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.admin.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.admin.password}}"/>               
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Query result | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>            
             
             <removeHeaders pattern="*" excludePattern="apbaTransactionId" />
@@ -103,7 +103,7 @@
             <removeHeaders pattern="Authorization"/>
         
             <recipientList>
-                <simple>{{aisManagerDestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.admin.username}}&amp;authPassword={{aisManagerDestinationEndpoint.admin.password}}</simple>
+                <simple>{{${systemCodeCamelCase}DestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.admin.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.admin.password}}</simple>
             </recipientList>
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Query result | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>            
             
@@ -121,7 +121,7 @@
             <removeHeaders pattern="Authorization"/>
         
             <recipientList>
-                <simple>{{aisManagerDestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.admin.username}}&amp;authPassword={{aisManagerDestinationEndpoint.admin.password}}</simple>
+                <simple>{{${systemCodeCamelCase}DestinationEndpoint.geographicalLine.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.admin.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.admin.password}}</simple>
             </recipientList>
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Query result | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>            
             
@@ -139,7 +139,7 @@
             <removeHeaders pattern="Authorization"/>
         
             <recipientList>
-                <simple>{{aisManagerDestinationEndpoint.position.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.regular.username}}&amp;authPassword={{aisManagerDestinationEndpoint.regular.password}}</simple>
+                <simple>{{${systemCodeCamelCase}DestinationEndpoint.position.URL}}${symbol_dollar}{header[CamelHttpPath]}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.regular.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.regular.password}}</simple>
             </recipientList>
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Query result | PROCESS | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>            
             

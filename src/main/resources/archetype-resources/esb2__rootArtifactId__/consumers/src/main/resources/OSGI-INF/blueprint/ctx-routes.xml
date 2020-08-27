@@ -93,7 +93,7 @@
             </setHeader> 
             <removeHeaders pattern="Authorization"/>
             
-            <to uri="{{aisManagerDestinationEndpoint.TrackEvent.URL}}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{aisManagerDestinationEndpoint.username}}&amp;authPassword={{aisManagerDestinationEndpoint.password}}"/>            
+            <to uri="{{${systemCodeCamelCase}DestinationEndpoint.TrackEvent.URL}}?bridgeEndpoint=true&amp;authenticationPreemptive=true&amp;authMethod=Basic&amp;authUsername={{${systemCodeCamelCase}DestinationEndpoint.username}}&amp;authPassword={{${systemCodeCamelCase}DestinationEndpoint.password}}"/>            
             <log loggingLevel="INFO" message="${symbol_dollar}{camelId} - ${symbol_dollar}{routeId} - ${symbol_dollar}{exchangeId} | Message consumed | OUT | apbaTransactionId: ${symbol_dollar}{header.apbaTransactionId} | remoteEndpointHttpResponseCode: ${symbol_dollar}{header[CamelHttpResponseCode]}"/>
         </route>  
         
