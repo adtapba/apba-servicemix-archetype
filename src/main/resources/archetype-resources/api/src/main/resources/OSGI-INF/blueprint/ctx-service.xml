@@ -27,12 +27,12 @@
     <bean id="authorizationInterceptor" class="org.apache.cxf.interceptor.security.SimpleAuthorizingInterceptor">
         <property name="methodRolesMap">
             <map>
-                <entry key="postLineCrossedEvent" value="${symbol_dollar}{jass.authorized.role.publishers}"/>
-                <entry key="getGeographicalLine" value="${symbol_dollar}{jass.authorized.role.proxyServicesAdminUsers} ${symbol_dollar}{jass.authorized.role.proxyServicesRegularUsers}"/>
-                <entry key="createGeographicalLine" value="${symbol_dollar}{jass.authorized.role.proxyServicesAdminUsers}"/>
-                <entry key="updateGeographicalLine" value="${symbol_dollar}{jass.authorized.role.proxyServicesAdminUsers}"/>
-                <entry key="deleteGeographicalLine" value="${symbol_dollar}{jass.authorized.role.proxyServicesAdminUsers}"/>
-                <entry key="getPosition" value="${symbol_dollar}{jass.authorized.role.proxyServicesAdminUsers} ${symbol_dollar}{jass.authorized.role.proxyServicesRegularUsers}"/>
+                <entry key="postLineCrossedEvent" value="${symbol_dollar}{jaas.authorized.role.publishers}"/>
+                <entry key="getGeographicalLine" value="${symbol_dollar}{jaas.authorized.role.proxyServicesAdminUsers} ${symbol_dollar}{jaas.authorized.role.proxyServicesRegularUsers}"/>
+                <entry key="createGeographicalLine" value="${symbol_dollar}{jaas.authorized.role.proxyServicesAdminUsers}"/>
+                <entry key="updateGeographicalLine" value="${symbol_dollar}{jaas.authorized.role.proxyServicesAdminUsers}"/>
+                <entry key="deleteGeographicalLine" value="${symbol_dollar}{jaas.authorized.role.proxyServicesAdminUsers}"/>
+                <entry key="getPosition" value="${symbol_dollar}{jaas.authorized.role.proxyServicesAdminUsers} ${symbol_dollar}{jaas.authorized.role.proxyServicesRegularUsers}"/>
             </map>
         </property>
     </bean>
