@@ -21,7 +21,7 @@ feature:install ${systemCode}/${symbol_dollar}{project.version}
         <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${symbol_dollar}{jackson.jaxrs.version}</bundle>           
         <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${symbol_dollar}{jackson.jaxrs.version}</bundle>             
         <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${symbol_dollar}{jackson.jaxrs.version}</bundle>  
-        <bundle>mvn:es.apba.infra.esb.support/apba-support-camel/1.0.0</bundle>  
+        <bundle>mvn:es.apba.infra.esb.support/apba-support-camel/1.0.1</bundle>  
         <bundle>mvn:es.apba.infra.esb.support/apba-support-cxf/1.0.0</bundle>  
         <bundle>mvn:${groupId}/api/${symbol_dollar}{project.version}</bundle>   
         <bundle>mvn:${groupId}/${systemCode}2esb/${symbol_dollar}{project.version}</bundle> 
